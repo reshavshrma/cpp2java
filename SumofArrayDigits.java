@@ -1,5 +1,3 @@
-import javax.sound.sampled.SourceDataLine;
-
 public class SumofArrayDigits {
 
     public void sumOfArray() {
