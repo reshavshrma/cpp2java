@@ -4,20 +4,25 @@ public class Student {
 
     Scanner scanner = new Scanner(System.in);
     int enteredStudents;
-    String name;
-    int roll_no;
+    String[] names;
+    int[] roll_nos;
+    int[] totalMarks;
 
-    public void StudentsData() {
+    public void studentsData() {
 
         System.out.print("Enter the number of students: ");
         enteredStudents = scanner.nextInt();
         scanner.nextLine(); 
 
-        for(int i = 0; i <= enteredStudents; i++) {
+        names = new String[enteredStudents];
+        roll_nos = new int[enteredStudents];
+        totalMarks = new int[enteredStudents];
+
+        for(int i = 0; i < enteredStudents; i++) {
             System.out.print("Enter the name of the Student " + (i+1) + ": ");
-            name = scanner.nextLine();
+            names[i] = scanner.nextLine();
             System.out.print("Enter the roll number: ");
-            roll_no = scanner.nextInt();
+            roll_nos[i] = scanner.nextInt();
             scanner.nextLine();
 
             int j, sum = 0;
@@ -28,20 +33,24 @@ public class Student {
                 scanner.nextLine();
                 sum = sum + marks[j];
             }
+            totalMarks[i] = sum;
             System.out.println("Total Marks of Student " + (i+1) + ": " + sum);
         }
     }
 
     public void printData() {
-        for(int i = 0; i <=enteredStudents; i++) {
-            System.out.println(name[i]);
-            System.out.println(roll_no[i]);
+        for (int i = 0; i < enteredStudents; i++) {
+            System.out.println("Student " + (i+1) + ":");
+            System.out.println("Name: " + names[i]);
+            System.out.println("Roll Number: " + roll_nos[i]);
+            System.out.println("Total Marks: " + totalMarks[i]);
+            System.out.println();
         }
     }
 
     public static void main(String[] args) {
         Student s = new Student();
-        s.StudentsData();
+        s.studentsData();
         s.printData();
     }
 }
